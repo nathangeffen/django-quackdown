@@ -1,0 +1,5 @@
+{{ object.responder.name }}
+{{ object.response_type.title }}
+{{ object.short_description }}
+{{ object.notes }}
+{{ object.tags }}

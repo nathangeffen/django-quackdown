@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block scripts %}
+    {{block.super}}
+    <link type="text/css" href="{{MEDIA_URL}}pubman/css/smoothness/jquery-ui-1.8.6.custom.css" rel="stylesheet" />  
+    <script type="text/javascript" src="{{MEDIA_URL}}pubman/js/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}pubman/js/jquery-ui-1.8.6.custom.min.js"></script>
+    
+    <script>
+    $(function() {
+        $('.datepicker').datepicker({
+            dateFormat: 'yy-mm-dd', 
+            changeYear: true ,
+            yearRange: '1910:2020'});                
+    });
+    </script>
+    
+{% endblock %}
+
+
+{% block title %}{{ block.super }} - {% trans "Submit claim to investigate" %} {% endblock %}
+   
+{% block content %}
+   
+<h1>{% trans "Report an untested claim about health care" %}</h1>
+{% blocktrans %}
+<p> 
+Please use this form to alert us to a claim that might be useful to put onto 
+Quackbase, our database of false or untested claims about health care. 
+</p>
+<p>
+Please include as much detail as possible. The more accurate, relevant and 
+clearly written your submission, the more likely we will investigate it.
+</p>
+<p>
+We have limited resources and make no commitment to addressing the claim you
+submit.
+</p>
+{% endblocktrans %}
+
+<div id="claim-to-investigate-form">   
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+    <ul>
+    {{form.as_ul}}
+    <li>
+    <input type="submit" name="submit" class="btn" value="{% trans 'Investigate' %}" id="submit">
+    </li>
+    </ul>            
+</form>
+</div>
+  
+{% endblock content %}
+ 

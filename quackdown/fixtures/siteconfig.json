@@ -1,0 +1,129 @@
+[
+    {
+        "pk": 1, 
+        "model": "siteconfig.website", 
+        "fields": {
+            "footer_html": "<p>Copyright &copy; 2011 <a href=\"http://www.tac.org.za\">Treatment Action Campaign</a> and <a href=\"http://www.cmt.org.za\">Community Media Trust</a>.<br/>\r\nQuackdown is implemented using free and open source \r\nsoftware.<br/>\r\nAll material on the site is published under the \r\n<a href=\"http://creativecommons.org/licenses/by/3.0/\">Creative Commons Attribution 3.0 Unported license</a>.<br/>\r\nThe site is implemented using the <a href=\"http://www.djangoproject.com\">\r\nDjango</a> web framework and the <a href=\"http://launchpad.net/django-pubman\">django-pubman</a> content management system.<br/>\r\nThe source for Quackdown can be downloaded from <a href=\"http://launchpad.net/django-quackdown\">launchpad</a>.</p>\r\n", 
+            "slogan": "Helping you make informed choices about health care ", 
+            "style_sheet": "css/style.css", 
+            "site": 1, 
+            "feed_title": "Quackdown", 
+            "cache_period": 300, 
+            "head_html": "<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" />\r\n<meta name=\"author\" content=\"Treatment Action Campaign and Community Media Trust\"/>\r\n<meta name=\"description\" content=\"Tracking untested health claims\"/>\r\n<meta name=\"keywords\" content=\"quack, quackery, health, charlatan\", \"evidence based medicine\"/>        \r\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/static_media/css/quackbase.css\" />\r\n\r\n", 
+            "logo": "", 
+            "feed_icon_url": "/feed/rss/listoffeeds", 
+            "root_division": "root", 
+            "icon": "icons/favicon_3.ico"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "siteconfig.division", 
+        "fields": {
+            "website": 1, 
+            "post_template_HTML": "", 
+            "level_order": "0000.0000", 
+            "name": "root", 
+            "parent": null, 
+            "level": 0, 
+            "excluded_pages": "", 
+            "use_span": false, 
+            "pre_template_HTML": "", 
+            "suppress_div": false, 
+            "classes": "", 
+            "included_pages": "", 
+            "cache_period": 300, 
+            "active": true, 
+            "template_filename": "", 
+            "order": 0
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "siteconfig.division", 
+        "fields": {
+            "website": 1, 
+            "post_template_HTML": "", 
+            "level_order": "0001.0000", 
+            "name": "right-sidebar", 
+            "parent": 1, 
+            "level": 1, 
+            "excluded_pages": "", 
+            "use_span": false, 
+            "pre_template_HTML": "", 
+            "suppress_div": false, 
+            "classes": "", 
+            "included_pages": "/", 
+            "cache_period": 300, 
+            "active": true, 
+            "template_filename": "", 
+            "order": 0
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "siteconfig.division", 
+        "fields": {
+            "website": 1, 
+            "post_template_HTML": "", 
+            "level_order": "0002.0000", 
+            "name": "stories", 
+            "parent": 2, 
+            "level": 2, 
+            "excluded_pages": "", 
+            "use_span": false, 
+            "pre_template_HTML": "", 
+            "suppress_div": false, 
+            "classes": "", 
+            "included_pages": "", 
+            "cache_period": 300, 
+            "active": true, 
+            "template_filename": "pubman/featured_story_snippet.html", 
+            "order": 0
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "siteconfig.division", 
+        "fields": {
+            "website": 1, 
+            "post_template_HTML": "", 
+            "level_order": "0002.0005", 
+            "name": "feeds", 
+            "parent": 2, 
+            "level": 2, 
+            "excluded_pages": "", 
+            "use_span": false, 
+            "pre_template_HTML": "", 
+            "suppress_div": false, 
+            "classes": "", 
+            "included_pages": "", 
+            "cache_period": 300, 
+            "active": false, 
+            "template_filename": "pubman/featured_feed_snippet.html", 
+            "order": 5
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "siteconfig.division", 
+        "fields": {
+            "website": 1, 
+            "post_template_HTML": "", 
+            "level_order": "0002.0010", 
+            "name": "tagcloud", 
+            "parent": 2, 
+            "level": 2, 
+            "excluded_pages": "", 
+            "use_span": false, 
+            "pre_template_HTML": "", 
+            "suppress_div": false, 
+            "classes": "", 
+            "included_pages": "", 
+            "cache_period": 300, 
+            "active": true, 
+            "template_filename": "pubman/tag_cloud_for_article_snippet.html", 
+            "order": 10
+        }
+    }
+]

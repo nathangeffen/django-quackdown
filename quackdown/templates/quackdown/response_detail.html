@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div id="quackbase">
+{% include 'quackdown/quackbase_snippet.html' %}
+
+<div id="response">
+
+<h2>{% trans "Response number" %}: {{object.id}}</h2>
+
+<h2><span class="response-label">{% trans "Responder" %}:</span> {{object.responder}}</h2>
+<p><span  class="response-label">{% trans "Date of response" %}:</span> {{object.response_date}}</p>
+<p><span  class="response-label">{% trans "Type of response" %}:</span> {{object.response_type}} {{object.condition}}</p>
+
+{% if object.short_description %}
+    <p>{{object.short_description}}</p>
+{% endif %}
+
+{% for claim in object.claims.all %}
+    {% if forloop.counter == 1 %}
+        <h3>Claims dealt with in this response</h3>
+        <ul>
+    {% endif %}
+
+    <li><a href="{% url claim_object claim.id %}">{{claim}}</a></li>
+    {% if forloop.last %}
+        </ul>
+    {% endif %}
+{% endfor %}
+
+
+{% for document in object.documents.all %}
+    {% if forloop.counter == 1 %}
+        <h3>Documents relevant to this claim</h3>
+        <ul>
+    {% endif %}
+
+    <li><a href="{{document.file}}">{{document}}</a></li>
+    {% if forloop.last %}
+        </ul>
+    {% endif %}
+{% endfor %}
+
+{% if object.notes %}
+    <h3>Description</h3>
+    {{object.notes|urlize|linebreaks}}
+{% endif %}
+
+{% with object.further_reading.all as further_reading %}
+    {% include "pubman/further_reading_snippet.html" %}
+{% endwith %}
+
+
+</div>
+</div>
+{% endblock %}
+
+{% block sidebar-content %} {% endblock %}

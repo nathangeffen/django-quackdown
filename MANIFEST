@@ -1,0 +1,13 @@
+README
+setup.py
+quackdown/__init__.py
+quackdown/admin.py
+quackdown/models.py
+quackdown/tests.py
+quackdown/urls.py
+quackdown/views.py
+quackdownproject/__init__.py
+quackdownproject/manage.py
+quackdownproject/settings.py
+quackdownproject/settings_development.py
+quackdownproject/urls.py

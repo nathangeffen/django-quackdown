@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block heading %}
+{{block.super}}
+
+<style type="text/css">
+    #content {
+        width: 900px;    
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div id="quackbase">
+    {% include 'quackdown/quackbase_snippet.html' %}
+
+    <div id="claims">
+    <h2>Claims</h2>
+    
+    {% blocktrans %}
+    
+    <p>Click on the number in the first column to go to the claim, where you can 
+    read full details about it.</p>
+    <p>Click on the claimant name in the second column to see all the claims made by this claimant
+    in the Quackbase database.</p>
+    
+    {% endblocktrans %}
+    
+    <table class="claims">
+        <thead>
+        <tr>       
+
+        <th style="width:4em;">
+            <a href="?ord=id{% if ordering == 'id' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Claim #" %}
+                {% if ordering == 'id' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}                
+            </a>
+        </th>
+
+        <th>
+            <a href="?ord=claimant{% if ordering == 'claimant' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Claimant" %}        
+                {% if ordering == 'claimant' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+
+        <th>
+            <a href="?ord=claim_date{% if ordering == 'claim_date' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Claim date" %}        
+                {% if ordering == 'claim_date' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+                                 
+        <th>
+            <a href="?ord=forum__title{% if ordering == 'forum__title' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Forum" %}        
+                {% if ordering == 'forum__title' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+
+        <th>
+            <a href="?ord=claim_type__title{% if ordering == 'claim_type__title' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Type" %}        
+                {% if ordering == 'claim_type__title' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+
+        <th>
+            <a href="?ord=condition__title{% if ordering == 'condition__title' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Condition" %}        
+                {% if ordering == 'condition__title' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+
+
+        <th>
+            <a href="?ord=plausibility__title{% if ordering == 'plausibility__title' and direction == 'd' %}&asc=a{% endif %}">
+                {% trans "Plausibility" %}        
+                {% if ordering == 'plausibility__title' %}{% if direction == 'a' %}&darr;{% else %}&uarr;{% endif %}{% endif %}
+            </a>            
+        </th>   
+        
+        <th>{% trans "Responses" %}</th>
+        <th>{% trans "Description" %}</th> 
+        </tr>
+        </thead>
+        <tbody>
+        {% for claim in object_list %}
+            <tr>
+            <td style="text-align:center;"><a href="{% url claim_object claim.id %}">{{claim.id}}</a></td>
+            <td><a href="{% url claimant_object claim.claimant.id %}">{{claim.claimant.name}}</a>
+            {% if claim.brand_name %} ({{claim.brand_name}}){% endif %}</td>
+            <td style="width: 7em">{{claim.claim_date}}</td>
+            <td>{{claim.forum}}</td>            
+            <td>{{claim.claim_type}}</td>
+            <td>{{claim.condition}}</td>
+            <td>{{claim.plausibility}}</td>
+ 
+            <td style="text-align:center;">{{claim.responses__count}}</td>
+            <td>
+            <div id="notes">            
+            {% if claim.short_description %}            
+                {{claim.short_description|truncatewords:30|urlize}}              
+            {% else %} 
+                {{claim.notes|safe|truncatewords:30|urlize}}                           
+            {% endif %}
+            <a href="{% url claim_object claim.id %}">{% trans "Read more" %}</a>
+            </div>
+            </td>
+             
+            </tr>        
+        {% endfor %}
+        </tbody>
+        
+    </table>
+    </div>
+    </div>
+    
+    {% include 'pubman/paginator_panel_snippet.html' %}
+
+{% endblock %}
+
+{% block sidebar-content %} {% endblock %}

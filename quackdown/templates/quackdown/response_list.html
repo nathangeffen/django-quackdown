@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div id="quackbase">
+    {% include 'quackdown/quackbase_snippet.html' %}
+    <div id="responses">
+    <h1>Responses</h1>
+    <table class="claims">
+        <thead>
+        <tr>
+        <th>{% trans "Response #" %}</th>
+        <th>{% trans "Responder" %}</th>
+        <th>{% trans "Date" %}</th>
+        <th>{% trans "Type" %}</th>
+        <th>{% trans "Claims" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for response in object_list %}
+            <tr>
+            <td><a href="{% url response_object response.id %}">{{response.id}}</a></td>
+            <td>{{response.responder.name }}</td>
+            <td>{{response.response_date}}</td>
+            <td>{{response.response_type}}</td>
+            <td>{{response.claims__count}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    </div>
+    </div>
+
+    {% include 'pubman/paginator_panel_snippet.html' %}
+{% endblock %}
+
+{% block sidebar-content %} {% endblock %}

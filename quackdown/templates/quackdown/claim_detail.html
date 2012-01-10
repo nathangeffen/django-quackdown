@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load markup %}
+
+{% block content %}
+<div id="quackbase">
+
+{% include 'quackdown/quackbase_snippet.html' %}
+
+<div id="claim">
+
+<h2>{% trans "Claim number" %}: {{object.id}}</h2>
+
+<p><span class="claim-label">{% trans "Claimant" %}:</span> <a href="{% url claimant_object object.claimant.id %}">{{object.claimant}}</a></p>
+<p><span  class="claim-label">{% trans "Claim date" %}:</span> {{object.claim_date}}</p>
+{% if object.brand_name %}<p> <span class="claim-label">{% trans "Brand name" %}:</span> {{object.brand_name}}</p>{% endif %}
+<p><span  class="claim-label">{% trans "Forum in which the claim was made" %}:</span> {{object.forum}}</p>
+<p><span  class="claim-label">{% trans "Claim methodology" %}:</span> {{object.methodology}}</p>
+<p><span  class="claim-label">{% trans "Frequency with which the claim is made by this claimant" %}:</span> {{object.claim_frequency}}</p> 
+<p><span  class="claim-label">{% trans "Actual claim" %}:</span> {{object.claim_type}} {{object.condition}}</p>
+<p><span  class="claim-label">{% trans "Plausibility of this claim" %}:</span> {{object.plausibility}}</p>
+
+{% if object.short_description %}
+    <h3>{% trans "Summary" %}</h3>
+    <p>{{object.short_description|urlize|linebreaks}}</p>
+{% endif %}   
+
+
+{% for response in object.responses.all %}
+    {% if forloop.counter == 1 %} 
+        <h3>Responses</h3>
+        <ul>
+    {% endif %}
+    
+    <li><a href="{% url response_object response.id %}">{{response}}</a></li>
+    {% if forloop.last %}
+        </ul>
+    {% endif %} 
+{% endfor %}
+    
+
+{% for document in object.documents.all %}
+    {% if forloop.counter == 1 %} 
+        <h3>Documents relevant to this claim</h3>
+        <ul>
+    {% endif %}
+    
+    <li><a href="{{document.file}}">{{document}}</a></li>
+    {% if forloop.last %}
+        </ul>
+    {% endif %} 
+{% endfor %}    
+
+{% if object.notes %}    
+    <h3>{% trans "Description" %}</h3>
+    {{object.notes|safe|urlize|linebreaks}}
+{% endif %}
+
+{% with object.further_reading.all as further_reading %}
+    {% include "pubman/further_reading_snippet.html" %}
+{% endwith %}
+    
+</div>
+    
+</div>
+
+{% endblock %}
+
+{% block sidebar-content %} {% endblock %}

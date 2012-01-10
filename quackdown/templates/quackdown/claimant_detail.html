@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div id="quackbase">
+{% include 'quackdown/quackbase_snippet.html' %}
+
+<div id="claimant">
+
+<h2>{% trans "Claimant" %}: {{object.name}}</h2>
+<p><span id="claimant-label">{% trans "Type" %}:</span> {{object.type}}</p>
+
+{% if object.physical_address %}
+    <h2>Physical address</h2>
+    <p><span id="claimant-label">{% trans "Street" %}:</span> {{object.physical_address}}</p>
+{% endif %}    
+
+{% if object.physical_city %}
+    <p><span id="claimant-label">{% trans "City" %}:</span> {{object.physical_address}}</p>
+{% endif %}    
+
+{% if object.physical_country %}
+    <p><span id="claimant-label">{% trans "Country" %}:</span> {{object.physical_country}}</p>
+{% endif %}    
+
+{% if object.physical_code %}
+    <p><span id="claimant-label">{% trans "Code" %}:</span> {{object.physical_code}}</p>
+{% endif %}    
+
+{% if object.postal_address %}
+    <h2>Postal address</h2>
+    <p><span id="claimant-label">{% trans "Postal address" %}:</span> {{object.postal_address}}</p>
+{% endif %}    
+
+{% if object.postal_city %}
+    <p><span id="claimant-label">{% trans "City" %}:</span> {{object.postal_address}}</p>
+{% endif %}    
+
+{% if object.postal_country %}
+    <p><span id="claimant-label">{% trans "Country" %}:</span> {{object.postal_country}}</p>
+{% endif %}    
+
+{% if object.postal_code %}
+    <p><span id="claimant-label">{% trans "Code" %}:</span> {{object.postal_code}}</p>
+{% endif %}    
+
+{% if object.website %}
+    <p><span id="claimant-label">{% trans "Website" %}:</span> <a href="{{object.website}}">{{object.website}}</a></p>
+{% endif %}    
+
+{% for claim in object.claim_set.all %}
+    {% if forloop.counter == 1 %} 
+        <h3>Claims and Responses</h3>
+	<ul class="claim">
+    {% endif %}    
+    <li><a href="{% url claim_object claim.id%}">{{claim}}<a>
+    {% if claim.short_description %}<p>{{claim.short_description}}</p>{% endif %}
+    <ul class="response">
+    {% for response in claim.responses.all reversed %}
+	<li><a href="{% url response_object response.id %}">{{response}}</a>
+	{% if response.short_description %}<p>{{response.short_description}}</p>
+{% endif %}
+	</li>
+    {% endfor %}
+    </ul>
+    </li>
+    {% if forloop.last %}
+	</ul>
+    {% endif %}
+{% endfor %}
+
+{% with object.further_reading.all as further_reading %}
+    {% include "pubman/further_reading_snippet.html" %}
+{% endwith %}
+
+
+</div>
+</div>
+{% endblock %}
+
+{% block sidebar-content %} {% endblock %}

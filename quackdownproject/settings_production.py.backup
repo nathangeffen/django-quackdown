@@ -1,0 +1,30 @@
+# Production settings. This file must not be checked into the repository
+# because it contains SECRET_KEY
+import os
+DEBUG = False
+SECRET_KEY = 'xulw67p^9_ys%a-7c85wpp$4g9&2xi!&24+%ikqui%mkimb@be'
+MEDIA_ROOT = '/home/nathangeffen/webapps/static_media'
+MEDIA_URL = 'http://quackdown.info/media/'
+ADMIN_MEDIA_PREFIX = 'http://quackdown.info/media/admin/' 
+
+#FILEBROWSER settings
+ 
+FILEBROWSER_DIRECTORY = 'userfiles/uploads/'
+FILEBROWSER_URL_FILEBROWSER_MEDIA = MEDIA_URL + 'pubman/filebrowser/'
+FILEBROWSER_PATH_FILEBROWSER_MEDIA = os.path.join(MEDIA_ROOT, 'pubman/filebrowser/')
+FILEBROWSER_URL_TINYMCE = MEDIA_URL + "pubman/js/tiny_mce/"
+FILEBROWSER_PATH_TINYMCE = os.path.join(MEDIA_ROOT, 'pubman/js/tiny_mce/')
+
+#if DEBUG:
+CACHE_BACKEND = 'dummy://'    
+#else:     
+#    CACHE_BACKEND = 'memcached://unix:/home/nathangeffen/memcached.sock'
+
+# Mail configuration
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'nathangeffen'
+EMAIL_HOST_PASSWORD = 'crEaK=faN~KINiN31'
+DEFAULT_FROM_EMAIL = 'info@quackdown.info'
+SERVER_EMAIL = 'info@quackdown.info'
+
+USE_L10N = False

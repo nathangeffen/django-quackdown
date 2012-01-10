@@ -1,0 +1,11 @@
+{{ object.claimant.name }}
+{{ object.brand_name.title }}
+{{ object.forum.title }}
+{{ object.methodology.title }}
+{{ object.claim_frequency.title }}
+{{ object.claim_type.title }}
+{{ object.condition.title }}
+{{ object.plausibility.title }}
+{{ object.short_description }}
+{{ object.notes }}
+{{ object.tags }}
