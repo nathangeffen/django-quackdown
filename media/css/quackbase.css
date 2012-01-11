@@ -1,0 +1,41 @@
+#content {
+    width: 900px;
+} 
+
+#quackbase h1 {
+    font-size: 14pt;
+    font-style: italic;
+    color: #585858;	
+}	
+
+#quackbase h2 {
+    font-size: 12pt;
+    color: #CEA361;
+}   
+
+
+table.claims {
+    font-size: 9pt;
+    border: 2px solid blue;    
+    border-collapse:collapse;
+    /*table-layout: fixed;*/
+    width: 100%;
+}
+
+table.claims th {
+    background: #CEF6F5; 	
+}
+
+table.claims th, table.claims td {
+   border: 1px solid black;
+   padding: 3px !important;
+}
+
+#claim span.claim-label {
+	font-weight: bold;
+}	
+
+a[href^="http://www.quackdown"] {
+    padding-right: 0pt !important;
+	background: transparent !important;
+}

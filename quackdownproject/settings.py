@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
+    'south', 
     'profiles',
     'sorl.thumbnail',
     'tagging',
