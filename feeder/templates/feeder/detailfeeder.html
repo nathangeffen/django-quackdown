@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}} - {{feed.title}} {% trans "feed" %}{% endblock %}
+
+{% block content %}
+
+<h1><a href="{{feed.url}}">{{feed.title}}</a></h1>
+
+{% include 'feed_snippet.html' %}
+
+{% endblock %}

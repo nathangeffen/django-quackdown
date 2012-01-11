@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'treemenus',
     'pubman',
     'siteconfig',
+    'feeder',
     'quackdown',
 )
 
