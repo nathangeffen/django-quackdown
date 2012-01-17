@@ -163,7 +163,7 @@ else:
 
 # Pubman settings
 
-GRAPPELLI_ADMIN_TITLE = "Quackdown Administration"
+GRAPPELLI_ADMIN_TITLE = '<a href="/">Quackdown</a> Administration'
 
 STATIC_ROOT = os.path.join(SITE_ROOT, "static/")
 
