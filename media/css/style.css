@@ -67,12 +67,6 @@ a:visited {text-decoration:none;}
 a:hover {text-decoration:underline;}
 a:active {text-decoration:underline;}
 
-a[href^="http"] {
-    padding-right: 12px;
-    background: url(/media/pubman/icons/external_link.png) no-repeat center right;
-    margin-right: 2px;
-}
-
 a[href^="mailto:"] {
     padding-right: 15px;
     background: url(/media/pubman/icons/mail.png) no-repeat center right;
